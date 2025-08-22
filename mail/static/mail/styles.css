@@ -1,3 +1,14 @@
 textarea {
     min-height: 400px;
 }
+
+/* mail desing */
+#emails-view .email-item {
+    margin: 10px 0;
+    padding: 5px 5px;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ced4da;
+    cursor: pointer;
+}
+

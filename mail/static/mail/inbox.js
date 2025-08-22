@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Use buttons to toggle between views
   document.querySelector('#submit-btn').addEventListener('click', send_email);
+ 
   document.querySelector('#inbox').addEventListener('click', () => load_mailbox('inbox'));
   document.querySelector('#sent').addEventListener('click', () => load_mailbox('sent'));
   document.querySelector('#archived').addEventListener('click', () => load_mailbox('archive'));
@@ -76,9 +77,9 @@ function load_mailbox(mailbox) {
       const emailDiv = document.createElement('div');
       emailDiv.className = 'email-item';
       emailDiv.innerHTML = `
-        <strong>From:</strong> ${email.sender} <br>
-        <strong>Subject:</strong> ${email.subject} <br>
-        <strong>Timestamp:</strong> ${email.timestamp}
+        <span><strong>${email.sender}  </strong> ${email.subject}</span>  
+        <br>
+        <strong></strong> ${email.timestamp}
       `;
       // Append the email div to the emails view
       document.querySelector('#emails-view').appendChild(emailDiv);
