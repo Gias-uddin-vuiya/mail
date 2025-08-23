@@ -26,6 +26,7 @@ function emailView(event) {
     // Show the email view and hide other views
     document.querySelector('#emails-view').style.display = 'none';
     document.querySelector('#compose-view').style.display = 'none';
+
     let detailsDiv = document.querySelector('.email-details');
 
     // Clear previous details
@@ -38,7 +39,21 @@ function emailView(event) {
       <hr>
       <p>${email.body}</p>
     `;
-    document.body.appendChild(emailView);
+    
+    // add color for read and unread emails
+    // if (email.read) {
+      // let viewEmils = document.querySelector('#emails-view');
+      // let divs = viewEmils.querySelectorAll('div');
+
+      // divs.forEach(div => {
+      //   div.style.backgroundColor = 'gray';   // set color
+      //   div.style.padding = '10px';           // extra style
+      // });
+
+      // console.log(viewEmils)
+    // } else {
+    //   detailsDiv.style.backgroundColor = '#ffffff'; // White for unread
+    // }
 
     // Mark the email as read
     if (!email.read) {
@@ -116,10 +131,16 @@ function load_mailbox(mailbox) {
     emails.forEach(email => {
       console.log(email);
       let id = email.id;
-      // console.log(id)
       // Create a div for each email
       const emailDiv = document.createElement('div');
       emailDiv.className = `email-item dataset-${id}`;
+      // add color for read and unread emails
+      if (email.read) {
+        emailDiv.style.backgroundColor = '#d3d3d3'; // Gray for read
+      
+      } else {
+        emailDiv.style.backgroundColor = '#ffffff'; // White for unread
+      }
       emailDiv.innerHTML = `
         <span><strong>${email.sender}  </strong> ${email.subject}</span>  
         <br>
@@ -132,4 +153,6 @@ function load_mailbox(mailbox) {
   // Show the mailbox name
   document.querySelector('#emails-view').innerHTML = `<h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
 }
+
+
 

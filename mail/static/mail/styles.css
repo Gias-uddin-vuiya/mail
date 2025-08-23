@@ -10,5 +10,6 @@ textarea {
     justify-content: space-between;
     border: 1px solid #ced4da;
     cursor: pointer;
+    background-color: white;
 }
 
