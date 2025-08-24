@@ -145,6 +145,9 @@ function load_mailbox(mailbox) {
         <span><strong>${email.sender}  </strong> ${email.subject}</span>  
         <br>
         <strong></strong> ${email.timestamp}
+        <br>
+        <button class="archive-btn archive-id-${id}"><i class="fa-solid fa-arrow-down"></i> Archive</button>
+
       `;
       // Append the email div to the emails view
       document.querySelector('#emails-view').appendChild(emailDiv);
