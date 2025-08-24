@@ -125,17 +125,13 @@ function load_mailbox(mailbox) {
   .then(emails => {
     // Print emails
     emails.forEach(email => {
-      // console.log(email);
       let id = email.id;
-      // Create a div for each email
       const emailDiv = document.createElement('div');
       emailDiv.className = `email-item dataset-${id}`;
       // add color for read and unread emails
-      if (email.read) {
-        emailDiv.style.backgroundColor = '#d3d3d3'; // Gray for read
-      } else {
-        emailDiv.style.backgroundColor = '#ffffff'; // White for unread
-      }
+      emailDiv.style.backgroundColor = email.read ? '#d3d3d3' : '#ffffff';
+
+      
       emailDiv.innerHTML = `
         <span><strong>${email.sender}  </strong> ${email.subject}</span>  
         <br>
@@ -143,8 +139,12 @@ function load_mailbox(mailbox) {
         <br>
         <button class="archive-btn archive-id-${id}">
           <i class="fa-solid fa-arrow-down"></i> ${email.archived ? "Unarchive" : "Archive"}
-        </button>
+        </button> 
       `;
+      if (mailbox === 'sent') {
+        // Hide archive button for sent mailbox
+        emailDiv.querySelector('.archive-btn').style.display = 'none';
+      }
       // Append the email div to the emails view
      const archiveBtn = emailDiv.querySelector(`.archive-id-${id}`);
       archiveBtn.addEventListener('click', (event) => {
