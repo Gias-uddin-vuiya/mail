@@ -35,9 +35,22 @@ function emailView(event) {
       <strong>To: </strong>  ${email.recipients}</br>
       <strong>Subject: </strong>  ${email.subject}</br>
       <strong>Timestamp: </strong>  ${email.timestamp}</br>
+      <button id="reply-btn" class="btn btn-sm btn-outline-primary">Reply</button>
       <hr>
       <p>${email.body}</p>
     `;
+    const replyBtn = document.querySelector('#reply-btn');
+    replyBtn.addEventListener('click', () => {
+      compose_email();
+      // Pre-fill composition fields    
+      document.querySelector('#compose-recipients').value = email.sender;
+      let subject = email.subject;
+      if (!subject.startsWith('Re: ')) {
+        subject = 'Re: ' + subject;
+      }
+      document.querySelector('#compose-subject').value = subject;
+      document.querySelector('#compose-body').value = `\n\nOn ${email.timestamp} ${email.sender} wrote:\n${email.body}`;
+    }); 
     
     // Mark the email as read
     if (!email.read) {
