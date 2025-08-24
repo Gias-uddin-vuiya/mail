@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+  
   // Use buttons to toggle between views
   document.querySelector('#submit-btn').addEventListener('click', send_email);
   document.querySelector('#emails-view').addEventListener('click', emailView);

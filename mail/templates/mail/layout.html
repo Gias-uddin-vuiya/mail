@@ -10,10 +10,49 @@
         {% block script %}
         {% endblock %}
     </head>
-    <body>
-        <div class="container">
-            {% block body %}
-            {% endblock %}
-        </div>
+    <body>  
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <h4>Sidebar Menu</h4>
+        <ul class="list-unstyled">
+        <li><a href="#">Inbox</a></li>
+        <li><a href="#">Sent</a></li>
+        <li><a href="#">Drafts</a></li>
+        </ul>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-light bg-light px-3">
+        <button class="btn btn-outline-secondary" id="toggle-btn">
+            <i class="fa-solid fa-list-ul"></i>
+        </button>
+        
+        <a class="navbar-brand ms-2" href="#">
+            <img src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_default_2x_r5.png" alt="Logo not found">
+        </a>
+
+        <form class="d-flex mx-auto w-50">
+            <div class="search-field">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input class="me-2" type="search" placeholder="Search mail">
+                <i class="fa-solid fa-sliders"></i>
+            </div>
+        </form>
+
+        <img src="https://img.freepik.com/premium-vector/man-avatar-profile-picture-isolated-background-avatar-profile-picture-man_1293239-4841.jpg" alt="profile" class="profile-img">
+    </nav>
+    
+    <div class="container">
+        {% block body %}
+        {% endblock %}
+    </div>
+
+    <script>
+        // Sidebar toggle functionality
+        document.getElementById('toggle-btn').addEventListener('click', function() {
+        document.getElementById('sidebar').classList.toggle('active');
+        });
+
+    </script>
     </body>
 </html>

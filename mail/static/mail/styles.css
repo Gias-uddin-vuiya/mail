@@ -13,3 +13,33 @@ textarea {
     background-color: white;
 }
 
+.navbar-brand img {
+    width: 100px;
+}
+
+ /* Sidebar styling */
+#sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    background: #f5f6f8;
+    transition: left 0.3s ease;
+    padding: 20px;
+}
+
+#sidebar.active {
+    left: 0;
+}
+
+#toggle-btn {
+  margin: 0px 10px;
+}
+
+.profile-img {
+    width: 50px;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+}
