@@ -34,6 +34,7 @@
 
     <!-- Navbar -->
     <nav class="navbar navbar-light bg-light px-3">
+       {% if request.user.email %}
         <button class="btn btn-outline-secondary" id="toggle-btn">
             <i class="fa-solid fa-list-ul"></i>
         </button>
@@ -53,6 +54,17 @@
         </form>
 
         <img src="https://img.freepik.com/premium-vector/man-avatar-profile-picture-isolated-background-avatar-profile-picture-man_1293239-4841.jpg" alt="profile" class="profile-img">
+        {% else %}
+        <!-- Logo -->
+        <a class="navbar-brand" href="#">
+            <img src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_default_2x_r5.png" alt="Logo not found">
+        </a>
+        <!-- Right side button -->
+        <div class="ms-auto d-flex">
+            <a href="{% url 'login' %}" class="btn btn-outline-primary me-2 login">Login</a>
+            <a href="{% url 'register' %}" class="btn btn-primary register">Create Account</a>
+        </div>
+        {% endif %}
     </nav>
     
     <div class="container">

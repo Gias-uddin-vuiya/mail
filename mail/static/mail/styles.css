@@ -18,6 +18,12 @@ textarea {
     width: 100px;
 }
 
+.login, .register {
+    font-weight: 500;
+    padding: 6px 16px;
+    margin: 0 10px;
+}
+
 /* Sidebar styling */
 #sidebar {
     width: 210px;
