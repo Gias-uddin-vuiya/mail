@@ -39,6 +39,7 @@ function emailView(event) {
       <hr>
       <p>${email.body}</p>
     `;
+    
     const replyBtn = document.querySelector('#reply-btn');
     replyBtn.addEventListener('click', () => {
       compose_email();
