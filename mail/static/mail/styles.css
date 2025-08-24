@@ -9,7 +9,7 @@ textarea {
     display: flex;
     justify-content: space-between;
     border: 1px solid #ced4da;
-    cursor: pointer;
+    /* cursor: pointer; */
     background-color: white;
 }
 

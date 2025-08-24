@@ -22,7 +22,6 @@ function emailView(event) {
   fetch(`/emails/${id}`)
   .then(response => response.json())
   .then(email => {    
-    // console.log(email);
     // Show the email view and hide other views
     document.querySelector('#emails-view').style.display = 'none';
     document.querySelector('#compose-view').style.display = 'none';
@@ -40,21 +39,6 @@ function emailView(event) {
       <p>${email.body}</p>
     `;
     
-    // add color for read and unread emails
-    // if (email.read) {
-      // let viewEmils = document.querySelector('#emails-view');
-      // let divs = viewEmils.querySelectorAll('div');
-
-      // divs.forEach(div => {
-      //   div.style.backgroundColor = 'gray';   // set color
-      //   div.style.padding = '10px';           // extra style
-      // });
-
-      // console.log(viewEmils)
-    // } else {
-    //   detailsDiv.style.backgroundColor = '#ffffff'; // White for unread
-    // }
-
     // Mark the email as read
     if (!email.read) {
       fetch(`/emails/${id}`, {
@@ -114,6 +98,19 @@ function compose_email() {
 }
 
 
+function toggleArchive(emailId, isArchived) {
+  fetch(`/emails/${emailId}`, {
+    method: 'PUT',
+    body: JSON.stringify({
+      archived: !isArchived
+    })
+  })
+  .then(() => {
+    load_mailbox('inbox'); // After archiving, reload inbox (or sent/archive depending on context)
+  });
+}
+
+
 function load_mailbox(mailbox) {
   
   // Show the mailbox and hide other views
@@ -126,10 +123,9 @@ function load_mailbox(mailbox) {
   fetch(`/emails/${mailbox}`)
   .then(response => response.json())
   .then(emails => {
-    console.log(emails);
     // Print emails
     emails.forEach(email => {
-      console.log(email);
+      // console.log(email);
       let id = email.id;
       // Create a div for each email
       const emailDiv = document.createElement('div');
@@ -137,7 +133,6 @@ function load_mailbox(mailbox) {
       // add color for read and unread emails
       if (email.read) {
         emailDiv.style.backgroundColor = '#d3d3d3'; // Gray for read
-      
       } else {
         emailDiv.style.backgroundColor = '#ffffff'; // White for unread
       }
@@ -146,12 +141,19 @@ function load_mailbox(mailbox) {
         <br>
         <strong></strong> ${email.timestamp}
         <br>
-        <button class="archive-btn archive-id-${id}"><i class="fa-solid fa-arrow-down"></i> Archive</button>
-
+        <button class="archive-btn archive-id-${id}">
+          <i class="fa-solid fa-arrow-down"></i> ${email.archived ? "Unarchive" : "Archive"}
+        </button>
       `;
       // Append the email div to the emails view
+     const archiveBtn = emailDiv.querySelector(`.archive-id-${id}`);
+      archiveBtn.addEventListener('click', (event) => {
+        event.stopPropagation();   // prevent opening details
+        toggleArchive(id, email.archived);
+      });
       document.querySelector('#emails-view').appendChild(emailDiv);
     });
+
   }); 
   // Show the mailbox name
   document.querySelector('#emails-view').innerHTML = `<h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
