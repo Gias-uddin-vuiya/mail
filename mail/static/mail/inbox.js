@@ -128,6 +128,7 @@ function toggleArchive(emailId, isArchived) {
 
 
 function deleteEmail(emailId, emailDiv) {   
+  // remove from UI
   emailDiv.remove();
   // delete from backend
   fetch(`/emails/delete/${emailId}`, {
@@ -180,7 +181,7 @@ function load_mailbox(mailbox) {
       const deleteBtn = emailDiv.querySelector(`.delete-id-${id}`);
       deleteBtn.addEventListener('click', (event) => {
         event.stopPropagation();   // prevent opening details
-        deleteEmail(id, email, emailDiv);
+        deleteEmail(id, emailDiv);
       });
       
       archiveBtn.addEventListener('click', (event) => {
