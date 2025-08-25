@@ -32,14 +32,30 @@ function emailView(event) {
     // Clear previous details
     detailsDiv.innerHTML = '';
     detailsDiv.innerHTML = `
-    </hr>
-      <strong>From: </strong> ${email.sender} </br>
-      <strong>To: </strong>  ${email.recipients}</br>
-      <strong>Subject: </strong>  ${email.subject}</br>
-      <strong>Timestamp: </strong>  ${email.timestamp}</br>
-      <button id="reply-btn" class="btn btn-sm btn-outline-primary">Reply</button>
-      <hr>
-      <p>${email.body}</p>
+    <div class="card shadow-sm rounded-3 border-0">
+      <!-- Email header -->
+      <div class="card-header bg-light d-flex justify-content-between align-items-center">
+        <div>
+          <h6 class="mb-1"><strong>From:</strong> ${email.sender}</h6>
+          <h6 class="mb-1"><strong>To:</strong> ${email.recipients}</h6>
+          <h6 class="mb-1"><strong>Subject:</strong> ${email.subject}</h6>
+        </div>
+        <small class="text-muted">${email.timestamp}</small>
+      </div>
+
+      <!-- Email body -->
+      <div class="card-body">
+        <p class="card-text" style="white-space: pre-line;">${email.body}</p>
+      </div>
+
+      <!-- Action buttons -->
+      <div class="card-footer bg-white d-flex justify-content-start gap-2">
+        <button id="reply-btn" class="btn btn-sm btn-outline-primary">
+          <i class="fa-solid fa-reply"></i> Reply
+        </button>
+        
+      </div>
+    </div>
     `;
     
     const replyBtn = document.querySelector('#reply-btn');
