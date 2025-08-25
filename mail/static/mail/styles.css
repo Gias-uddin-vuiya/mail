@@ -1,3 +1,8 @@
+
+body {
+  margin-top: 80px;
+}
+
 textarea {
     min-height: 400px;
 }
@@ -123,7 +128,7 @@ h3 {
     width: 210px;
     height: 100vh;
     position: fixed;
-    margin-top: 70px;
+    padding-top: 70px;
     top: 0px;
     left: -250px;
     background: #f8f9fa;
@@ -131,18 +136,21 @@ h3 {
     padding: 20px;
 }
 
+
+
 #sidebar.active {
     left: 0px;
 }
 
 /* Compose button */
 .compose-btn {
+    margin-top: 80px;
     display: flex;
     align-items: center;
     gap: 10px;
     width: 100%;
     padding: 12px;
-    background: #0b57d0;   
+    background: #0b57d0;
     color: white;
     font-weight: bold;
     border: none;
@@ -150,11 +158,11 @@ h3 {
     cursor: pointer;
     margin-bottom: 20px;
     transition: background 0.3s;
-  }
+}
 
-  .compose-btn:hover {
+.compose-btn:hover {
     background: #084298;
-  }
+}
 
   /* Sidebar menu */
   #sidebar ul {
