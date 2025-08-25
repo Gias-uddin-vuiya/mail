@@ -2,6 +2,25 @@ textarea {
     min-height: 400px;
 }
 
+/* login form design */
+.login-form , .register-form{
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+}
+
+.login-form h2, .register-form h2 {
+    margin-left: 16px;
+    margin-bottom: 20px;
+}
+
+.login-form .btn {
+    margin-left: 16px;
+}
+
+
 /* mail desing */
 #emails-view .email-item {
     margin: 10px 0;
