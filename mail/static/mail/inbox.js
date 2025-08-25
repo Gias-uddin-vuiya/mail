@@ -32,6 +32,7 @@ function emailView(event) {
     // Clear previous details
     detailsDiv.innerHTML = '';
     detailsDiv.innerHTML = `
+    </hr>
       <strong>From: </strong> ${email.sender} </br>
       <strong>To: </strong>  ${email.recipients}</br>
       <strong>Subject: </strong>  ${email.subject}</br>

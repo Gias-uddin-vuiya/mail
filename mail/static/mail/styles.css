@@ -2,6 +2,13 @@ textarea {
     min-height: 400px;
 }
 
+/* inbox,sendbox,archive heading design */
+h3 {
+    padding: 10px 0;
+    border-bottom: 1px solid #e9ecef;
+    font-family: system-ui;
+}
+
 /* login form design */
 .login-form , .register-form{
     margin: 50px auto;
@@ -74,7 +81,7 @@ textarea {
     width: 210px;
     height: 100vh;
     position: fixed;
-    margin-top: 50px;
+    margin-top: 70px;
     top: 0px;
     left: -250px;
     background: #f8f9fa;
