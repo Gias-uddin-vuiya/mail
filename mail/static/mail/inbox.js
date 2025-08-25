@@ -151,18 +151,12 @@ function load_mailbox(mailbox) {
       emailDiv.innerHTML = `
         <span><strong>${email.sender}  </strong> ${email.subject}</span>  
         <br>
-        <strong></strong> ${email.timestamp}
+        <span class="timestamp">${email.timestamp}</span>
         <br>
-
-        
         <div class="item-icons">
           <i class="archive-btn archive-id-${id} fa-solid ${email.archived ? 'fa-box-archive' : 'fa-box-open'}" title="${email.archived ? 'Unarchive' : 'Archive'}"></i>
           <i class="delete-btn fa-solid fa-trash" title="delete"></i>
         </div> 
-
-        
-        
-         
       `;
       // <i class="fa-solid fa-box-open"></i>
       if (mailbox === 'sent') {
