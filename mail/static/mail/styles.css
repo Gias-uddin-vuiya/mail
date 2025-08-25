@@ -20,6 +20,32 @@ textarea {
     margin-left: 16px;
 }
 
+/* user profile design */
+.dropdown-menu {
+  width: 300px;
+  right: 0;
+  left: auto; /* stop it from pushing to left */
+}
+
+.dropdown-menu .dropdown-header {
+  text-align: center;
+}
+
+.dropdown-menu .profile-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 10px auto;
+}
+
+.dropdown-menu .dropdown-item-text {
+  text-align: center;
+  font-size: 14px;
+  color: #6c757d;
+}
+
 
 /* mail desing */
 #emails-view .email-item {
