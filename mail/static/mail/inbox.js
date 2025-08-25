@@ -127,6 +127,17 @@ function toggleArchive(emailId, isArchived) {
 }
 
 
+function deleteEmail(emailId, emailDiv) {   
+  emailDiv.remove();
+  // delete from backend
+  fetch(`/emails/delete/${emailId}`, {
+    method: 'DELETE'
+  })
+  .then(() => {
+    console.log(`Email with ID ${emailId} deleted.`);
+  });
+}
+
 function load_mailbox(mailbox) {
   
   // Show the mailbox and hide other views
@@ -155,7 +166,7 @@ function load_mailbox(mailbox) {
         <br>
         <div class="item-icons">
           <i class="archive-btn archive-id-${id} fa-solid ${email.archived ? 'fa-box-archive' : 'fa-box-open'}" title="${email.archived ? 'Unarchive' : 'Archive'}"></i>
-          <i class="delete-btn fa-solid fa-trash" title="delete"></i>
+          <i class="delete-btn delete-id-${id} fa-solid fa-trash" title="delete"></i>
         </div> 
       `;
       // <i class="fa-solid fa-box-open"></i>
@@ -163,8 +174,15 @@ function load_mailbox(mailbox) {
         // Hide archive button for sent mailbox
         emailDiv.querySelector('.archive-btn').style.display = 'none';
       }
+
       // Append the email div to the emails view
-     const archiveBtn = emailDiv.querySelector(`.archive-id-${id}`);
+      const archiveBtn = emailDiv.querySelector(`.archive-id-${id}`);
+      const deleteBtn = emailDiv.querySelector(`.delete-id-${id}`);
+      deleteBtn.addEventListener('click', (event) => {
+        event.stopPropagation();   // prevent opening details
+        deleteEmail(id, email, emailDiv);
+      });
+      
       archiveBtn.addEventListener('click', (event) => {
         event.stopPropagation();   // prevent opening details
         toggleArchive(id, email.archived);

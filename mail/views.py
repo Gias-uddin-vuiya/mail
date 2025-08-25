@@ -21,6 +21,27 @@ def index(request):
         return HttpResponseRedirect(reverse("login"))
 
 
+# add delete email functionality
+@csrf_exempt
+@login_required
+def delete_email(request, email_id):
+    # Query for requested email
+    try:
+        email = Email.objects.get(user=request.user, pk=email_id)
+    except Email.DoesNotExist:
+        return JsonResponse({"error": "Email not found."}, status=404)
+
+    # Delete the email
+    if request.method == "DELETE":
+        email.delete()
+        return JsonResponse({"message": "Email deleted successfully."}, status=204)
+
+    # Email must be via DELETE
+    else:
+        return JsonResponse({
+            "error": "DELETE request required."
+        }, status=400)
+
 @csrf_exempt
 @login_required
 def compose(request):
