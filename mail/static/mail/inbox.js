@@ -145,7 +145,7 @@ function load_mailbox(mailbox) {
       const emailDiv = document.createElement('div');
       emailDiv.className = `email-item dataset-${id}`;
       // add color for read and unread emails
-      emailDiv.style.backgroundColor = email.read ? '#d3d3d3' : '#ffffff';
+      emailDiv.style.backgroundColor = email.read ? '#e9ecef85' : '#ffffff';
 
       
       emailDiv.innerHTML = `
@@ -153,10 +153,18 @@ function load_mailbox(mailbox) {
         <br>
         <strong></strong> ${email.timestamp}
         <br>
-        <button class="archive-btn archive-id-${id}">
-          <i class="fa-solid fa-arrow-down"></i> ${email.archived ? "Unarchive" : "Archive"}
-        </button> 
+
+        
+        <div class="item-icons">
+          <i class="archive-btn archive-id-${id} fa-solid ${email.archived ? 'fa-box-archive' : 'fa-box-open'}" title="${email.archived ? 'Unarchive' : 'Archive'}"></i>
+          <i class="delete-btn fa-solid fa-trash" title="delete"></i>
+        </div> 
+
+        
+        
+         
       `;
+      // <i class="fa-solid fa-box-open"></i>
       if (mailbox === 'sent') {
         // Hide archive button for sent mailbox
         emailDiv.querySelector('.archive-btn').style.display = 'none';

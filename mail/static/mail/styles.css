@@ -56,13 +56,39 @@ h3 {
 
 /* mail desing */
 #emails-view .email-item {
-    margin: 10px 0;
-    padding: 5px 5px;
+    margin: 4px 0;
+    padding: 1px 10px;
     display: flex;
     justify-content: space-between;
-    border: 1px solid #ced4da;
+    border-bottom: 1px solid #82818187;
+    border-radius: 4px;
     cursor: pointer;
-    background-color: white;
+    /* transition: background-color 0.3s, border 0.5s; */
+}
+
+.email-item .item-icons {
+  display: none;
+  gap: 10px;
+  color: #6c757d;
+}
+
+.email-item:hover .item-icons {
+  display: inline-block; 
+}
+
+.archive-btn, .delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #6c757d;
+    font-size: 16px;
+    padding: 0px 16px;
+}
+
+#emails-view .email-item:hover {  
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ced4da;
+  background-color: #e9ecef85;
 }
 
 .navbar-brand img {
