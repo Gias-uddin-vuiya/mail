@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Use buttons to toggle between views
   document.querySelector('#submit-btn').addEventListener('click', send_email);
   document.querySelector('#emails-view').addEventListener('click', emailView);
- 
+  document.querySelector('.search-input').addEventListener('keyup', searchEmail) 
   document.querySelector('#inbox').addEventListener('click', () => load_mailbox('inbox'));
   document.querySelector('#sent').addEventListener('click', () => load_mailbox('sent'));
   document.querySelector('#archived').addEventListener('click', () => load_mailbox('archive'));
@@ -126,7 +126,21 @@ function toggleArchive(emailId, isArchived) {
   });
 }
 
+// search funcitonality
+function searchEmail() {
+  const query = this.value.toLowerCase();
+  // loop through all emails in the UI
+  document.querySelectorAll('.email-item').forEach(email => {
+    const text = email.innerText.toLowerCase();
+    if (text.includes(query)) {
+      email.style.display = 'block';
+    } else {
+      email.style.display = 'none';
+    }
+  });
+};
 
+// delete email
 function deleteEmail(emailId, emailDiv) {   
   // remove from UI
   emailDiv.remove();
