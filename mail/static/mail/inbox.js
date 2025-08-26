@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-  
+
   // Use buttons to toggle between views
   document.querySelector('#submit-btn').addEventListener('click', send_email);
   document.querySelector('#emails-view').addEventListener('click', emailView);
@@ -129,7 +129,7 @@ function compose_email() {
 
 }
 
-
+// archive and unarchive email
 function toggleArchive(emailId, isArchived) {
   fetch(`/emails/${emailId}`, {
     method: 'PUT',
